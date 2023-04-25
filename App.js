@@ -10,6 +10,7 @@ export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const onAddEvents = () => {
+    
     if (text.length === 0 ) return;
     setEvents([
       ...events,
@@ -22,6 +23,7 @@ export default function App() {
   };
 
   const onHandlerEvent = (id) => {
+    
     setModalVisible(!modalVisible);
     const selectedEvent = events.find(event => event.id === id);
     setSelectedEvent(selectedEvent);
