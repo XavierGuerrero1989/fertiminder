@@ -1,33 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      marginHorizontal: 20,
-    },
-    inputContainer: {
-      flexDirection: 'row',
-      marginTop: 60,
-      alignItems: 'center',
-      justifyContent: "space-between",
-    },
-    input: {
-      width: '80%',
-      borderBottomWidth: 1,
-      borderColor: "#52528C",
-      marginRight: 15,
-      color: "#212121"
-    },
-    secondContainer: {
-      marginTop: 20,
-    },
-    taskList: {
-      padding: 20,
-      backgroundColor: "#CB410B",
-      margin: 10, 
-      color: "#FFFFFF",
-    },
+export const styles= StyleSheet.create({
+    
     modalContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -59,4 +33,5 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
       },
-  });
+      
+})

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity, Modal } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './styles';
+import { Input, Item, ModelModal } from './components/index';
 
 export default function App() {
 
@@ -50,44 +51,29 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput 
-        placeholder='Enter your task' 
-        style={styles.input} 
-        value={text}
-        onChangeText={(text) => setText(text)}
+        <Input
+            placeholder={'Enter your task'}
+            value={text}
+            OnchangeText={(text) => setText(text)}
+            ButtonColor={"#52528C"}
+            ButtonTitle={'Add'}
+            OnHandlerButton={onAddEvents}
         />
-        <Button title='Add' color="#52528C" onPress={onAddEvents}/>
-      </View>
-      <View style={styles.secondContainer}>
-      <FlatList 
-          renderItem={renderItem}
-          data={events}
-          keyExtractor={(item) => item.id}
-          alwaysBounceVertical={false}
+        <Item 
+            functionRender={renderItem}
+            data={events}
+            keyExtFunction={(item) => item.id}
+            bounceValue={false}
         />
-      </View>
-      <Modal visible={modalVisible} animationType='fade'>
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Event Detail</Text>
-          <View style={styles.modalDetailContainer}>
-            <Text style={styles.modalDetailMessage}>Are you sure to delete this item?</Text>
-            <Text style={styles.selectedEvent}>{selectedEvent?.value}</Text>
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button 
-              title='Cancel'
-              color='#52528C'
-              onPress={() => onHandlerCancelModal()}
-            />
-            <Button 
-            title='Delete'
-            color='#52528C'
-            onPress={() => onHandlerDeleteEvent(selectedEvent.id)}
-            />
-          </View>
-        </View>
-      </Modal>
+
+        <ModelModal 
+            ModalVisibility={modalVisible}
+            ModalAnimation={'fade'}
+            ModalText={'Are you sure to delete this item?'}
+            EventValue={selectedEvent?.value}
+            OnHandCancelFcn={() => onHandlerCancelModal()}
+            OnHandDeleteFcn={() => onHandlerDeleteEvent(selectedEvent.id)}
+        />
     </View>
   );
 }
